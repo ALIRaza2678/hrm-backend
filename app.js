@@ -15,4 +15,8 @@ connectDb();
 app.use("/api", Userroute);
 app.use("/api/attendance", attendanceRoutes);
 
+app.get("/", (req, res) => {
+  res.send("Server is running ✅");
+});
+
 module.exports = app;
