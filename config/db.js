@@ -2,10 +2,16 @@ const mongoose = require("mongoose");
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URI);
-    console.log("✅ MongoDB connected");
+    const mongoURI =
+      process.env.NODE_ENV === "production"
+        ? process.env.MONGO_URI_ATLAS
+        : process.env.MONGO_URI_LOCAL;
+
+    await mongoose.connect(mongoURI);
+
+    console.log(`✅ MongoDB Connected (${process.env.NODE_ENV})`);
   } catch (err) {
-    console.error("❌ MongoDB error:", err.message);
+    console.error("❌ MongoDB connection error:", err.message);
     process.exit(1);
   }
 };
