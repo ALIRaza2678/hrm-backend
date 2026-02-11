@@ -3,9 +3,10 @@ const mongoose = require("mongoose");
 const connectDB = async () => {
   try {
     const mongoURI =
-      process.env.NODE_ENV === "production"
-        ? process.env.MONGO_URI_ATLAS
-        : process.env.MONGO_URI_LOCAL;
+      // process.env.NODE_ENV === "production"
+      //   ? process.env.MONGO_URI_ATLAS
+      //   : 
+        process.env.MONGO_URI_LOCAL;
 
     await mongoose.connect(mongoURI);
 
